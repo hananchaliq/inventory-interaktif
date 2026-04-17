@@ -1,19 +1,26 @@
 {
   "version": 2,
   "functions": {
-    "backend/*.php": {
+    "api/*.php": {
       "runtime": "vercel-php@0.7.1"
     }
   },
   "routes": [
     {
-      "src": "/api/(.*)", 
-      "dest": "/backend/$1.php"
+      "src": "/api/(.*)",
+      "dest": "/api/$1.php"
     },
     {
       "src": "/(.*)",
-      "distDir": "frontend/dist",
-      "status": 200
+      "dest": "/frontend/dist/$1",
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/dist/index.html"
     }
   ]
 }
