@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Barang from "./pages/Barang";
 import Kategori from "./pages/Kategori";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function App() {
    // 2. BIAR GAK MERAH: State WAJIB di dalam fungsi App
    const [isOpen, setIsOpen] = useState(false);

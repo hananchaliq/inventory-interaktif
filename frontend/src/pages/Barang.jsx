@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash, faEdit, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const Toast = Swal.mixin({
    toast: true,
    position: "top-end",
@@ -24,11 +26,9 @@ export default function Barang() {
    const [editId, setEditId] = useState(null);
    const [isLoading, setIsLoading] = useState(false);
 
-   const API_URL = "http://localhost/inventory-interaktif/backend/";
-
    const ambilKategori = async () => {
       try {
-         const res = await fetch(`${API_URL}get_kategori.php`);
+         const res = await fetch(`${apiUrl}get_kategori.php`);
          const hasil = await res.json();
          setListKategori(hasil);
       } catch (err) {
@@ -38,7 +38,7 @@ export default function Barang() {
 
    const ambilData = async () => {
       try {
-         const res = await fetch(`${API_URL}index.php`);
+         const res = await fetch(`${apiUrl}index.php`);
          const hasil = await res.json();
          setDataBarang(hasil);
       } catch (err) {
@@ -65,7 +65,7 @@ export default function Barang() {
       const url = editId ? "edit_barang.php" : "tambah_barang.php";
 
       try {
-         const res = await fetch(`${API_URL}${url}`, {
+         const res = await fetch(`${apiUrl}${url}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
@@ -103,7 +103,7 @@ export default function Barang() {
 
       if (confirm.isConfirmed) {
          try {
-            const res = await fetch(`${API_URL}hapus_barang.php`, {
+            const res = await fetch(`${apiUrl}hapus_barang.php`, {
                method: "DELETE",
                headers: { "Content-Type": "application/json" },
                body: JSON.stringify({ id }),

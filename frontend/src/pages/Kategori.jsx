@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash, faEdit, faLayerGroup, faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const Toast = Swal.mixin({
    toast: true,
    position: "top-end",
@@ -20,11 +22,9 @@ export default function Kategori() {
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [editId, setEditId] = useState(null);
 
-   const API_URL = "http://localhost/inventory-interaktif/backend/";
-
    const ambilKategori = async () => {
       try {
-         const res = await fetch(`${API_URL}get_kategori.php`);
+         const res = await fetch(`${apiUrl}get_kategori.php`);
          const hasil = await res.json();
          setListKategori(hasil);
       } catch (err) {
@@ -38,7 +38,7 @@ export default function Kategori() {
       const url = editId ? "edit_kategori.php" : "tambah_kategori.php";
 
       try {
-         const res = await fetch(`${API_URL}${url}`, {
+         const res = await fetch(`${apiUrl}${url}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id: editId, nama_kategori: namaKategori }),
@@ -69,7 +69,7 @@ export default function Kategori() {
 
       if (result.isConfirmed) {
          try {
-            const res = await fetch(`${API_URL}hapus_kategori.php`, {
+            const res = await fetch(`${apiUrl}hapus_kategori.php`, {
                method: "DELETE",
                headers: { "Content-Type": "application/json" },
                body: JSON.stringify({ id }),

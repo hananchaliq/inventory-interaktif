@@ -4,13 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCubes, faLayerGroup, faChartLine, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function Dashboard() {
    const [stats, setStats] = useState({ barang: 0, kategori: 0 });
    const [dataAnalitik, setDataAnalitik] = useState([]);
    const [loading, setLoading] = useState(true);
 
    useEffect(() => {
-      fetch("http://localhost/inventory-interaktif/backend/get_analitik.php")
+      fetch(`${apiUrl}get_analitik.php`)
          .then(res => res.json())
          .then(data => {
             setDataAnalitik(data);
@@ -21,8 +23,8 @@ export default function Dashboard() {
 
       const fetchStats = async () => {
          try {
-            const resBarang = await fetch("http://localhost/inventory-interaktif/backend/index.php");
-            const resKat = await fetch("http://localhost/inventory-interaktif/backend/get_kategori.php");
+            const resBarang = await fetch(`${apiUrl}index.php`);
+            const resKat = await fetch(`${apiUrl}get_kategori.php`);
 
             const dataBarang = await resBarang.json();
             const dataKat = await resKat.json();
