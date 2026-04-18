@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/*.php": {
-      "runtime": "vercel-php@0.7.1"
+      "runtime": "vercel-php@0.6.0"
     }
   },
   "routes": [
@@ -11,9 +11,8 @@
       "dest": "/api/$1.php"
     },
     {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/$1",
-      "continue": true
+      "src": "/assets/(.*)",
+      "dest": "/frontend/dist/assets/$1"
     },
     {
       "handle": "filesystem"
