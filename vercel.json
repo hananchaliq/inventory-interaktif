@@ -13,27 +13,17 @@
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
+      "config": { 
+        "distDir": "dist",
+        "installCommand": "npm install",
+        "buildCommand": "npm run build"
       }
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.php"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/$1",
-      "continue": true
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/index.html"
-    }
+    { "src": "/api/(.*)", "dest": "/api/$1.php" },
+    { "src": "/assets/(.*)", "dest": "/frontend/dist/assets/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/frontend/dist/index.html" }
   ]
 }
