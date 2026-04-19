@@ -5,6 +5,19 @@
       "runtime": "vercel-php@0.7.1"
     }
   },
+  "builds": [
+    {
+      "src": "api/*.php",
+      "use": "vercel-php@0.7.1"
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
