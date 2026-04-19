@@ -1,0 +1,8 @@
+{
+  "name": "inventory-root",
+  "version": "1.0.0",
+  "scripts": {
+    "install-all": "cd frontend && npm install",
+    "build": "cd frontend && npm run build"
+  }
+}
