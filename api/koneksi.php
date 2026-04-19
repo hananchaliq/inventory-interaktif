@@ -9,11 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
    exit();
 }
 
-$host = getenv('DB_HOST') ?: 'localhost';
-$user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASSWORD') ?: '';
-$db = getenv('DB_NAME') ?: 'inventory_interaktif';
-$port = getenv('DB_PORT') ?: 3306;
+$host = getenv('DB_HOST');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
+$db = getenv('DB_NAME');
+$port = getenv('DB_PORT') ?: '3306';
 
 $koneksi = mysqli_connect($host, $user, $pass, $db, $port);
 
