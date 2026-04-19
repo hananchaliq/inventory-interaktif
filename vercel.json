@@ -5,25 +5,26 @@
       "runtime": "vercel-php@0.7.1"
     }
   },
-  "builds": [
+  "routes": [
     {
-      "src": "api/*.php",
-      "use": "vercel-php@0.7.1"
+      "src": "/api/(.*)",
+      "dest": "/api/$1.php"
     },
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { 
-        "distDir": "dist",
-        "installCommand": "npm install",
-        "buildCommand": "npm run build"
-      }
+      "src": "/assets/(.*)",
+      "dest": "/frontend/dist/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/dist/$1",
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/dist/index.html"
     }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1.php" },
-    { "src": "/assets/(.*)", "dest": "/frontend/dist/assets/$1" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/frontend/dist/index.html" }
   ]
 }
