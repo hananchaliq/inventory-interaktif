@@ -1,1 +1,38 @@
 @import "tailwindcss";
+
+@source "./index.html";
+@source "./src/**/*.{js,ts,jsx,tsx}";
+
+/* ==========================================
+   CUSTOM MINIMALIST DARK SCROLLBAR (GLOBAL)
+   ========================================== */
+
+/* 1. Lebar scrollbar (Vertikal & Horizontal) */
+::-webkit-scrollbar {
+  width: 6px;  /* Sangat tipis dan minimalis */
+  height: 6px; /* Untuk scrollbar horizontal */
+}
+
+/* 2. Area track / Latar belakang scrollbar */
+::-webkit-scrollbar-track {
+  background: #121212; /* Sesuaikan dengan warna background gelap utamamu */
+  border-radius: 10px;
+}
+
+/* 3. Handle / Batang scrollbar yang digeser */
+::-webkit-scrollbar-thumb {
+  background: #333333; /* Warna abu-abu gelap agar menyatu/tersembunyi */
+  border-radius: 10px;
+  border: 1px solid #121212; /* Trick memberi space/padding di dalam track */
+  transition: background 0.3s ease;
+}
+
+/* 4. Efek ketika kursor diarahkan ke scrollbar (Hover) */
+::-webkit-scrollbar-thumb:hover {
+  background: #555555; /* Sedikit lebih terang saat di-hover agar user tahu itu scrollbar */
+}
+
+/* 5. Efek ketika scrollbar sedang diklik/ditekan (Active) */
+::-webkit-scrollbar-thumb:active {
+  background: #777777; 
+}
