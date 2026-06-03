@@ -1,4 +1,5 @@
 <?php
+
 include 'koneksi.php'; 
 
 $sql = "SELECT barang.*, kategori.nama_kategori 

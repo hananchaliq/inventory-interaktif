@@ -4,5 +4,10 @@
   "scripts": {
     "install-all": "cd frontend && npm install",
     "build": "cd frontend && npm run build"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.4",
+    "autoprefixer": "^10.5.0",
+    "tailwindcss": "^4.2.4"
   }
 }

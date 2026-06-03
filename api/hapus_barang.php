@@ -10,7 +10,7 @@ if (isset($input['id'])) {
    $query = mysqli_query($koneksi, "DELETE FROM barang WHERE id='$id'");
 
    if ($query) {
-      echo json_encode(["status" => "sukses", "message" => "Barang berhasil dihapus"]);
+      echo json_encode(["status" => "success", "message" => "Barang berhasil dihapus"]);
    } else {
       echo json_encode(["status" => "gagal", "message" => mysqli_error($koneksi)]);
    }
